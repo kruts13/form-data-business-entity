@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: azure; 
+}
+
+label {
+    font-weight: 500;
+    color: #666666;
+    font-family: sans-serif;
+    font-size: medium;
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+section {
+    padding: 10px;
+}
+
+table {
+    border: 1px solid grey;
+}
+
+.form-div {
+    display: block;
+    text-align: center;
+}
+
+.form-container {
+    width: 800px;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid grey;
+    background-color: blanchedalmond;
+    margin: auto;
+}
+
+.form-label {
+    font-size: 1.5em;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+    line-height: 150%;
+}
+
+.form-control, .input-group {
+    display: inline-block;
+    width: 50% !important;
+}
+
+.input-group-append {
+    display: inherit;
+}
+
+hr {
+    margin-top: 0;
+    border: 1px solid black;
+}
+
+button {
+    width: -webkit-fill-available;
+    width: 100%;
+}

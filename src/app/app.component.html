@@ -1,0 +1,73 @@
+<!-- Form to enter and edit business entity data information -->
+<section>
+  <div class="form-container">
+    <span class="form-label">
+      Business Entity Form
+    </span>
+    <hr>
+    <form [formGroup]="businessEntityForm" id="businessEntityForm" (ngSubmit)="saveForm()" noValidate>
+      <div class="form-div" *ngFor="let each of entityMetaArr">
+        <ng-container *ngIf="!each.system">
+          <ng-container *ngIf="each['dataType'] === 'text'">
+            <div class="form-group">
+              <label for="{{each['name']}}">{{each['label']}}</label>
+              <input type="{{each['dataType']}}" class="form-control margin-left-10" id="{{each['name']}}"
+                placeholder="{{each['label']}}" formControlName="{{each['name']}}">
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="each['dataType'] === 'number'">
+            <div class="form-group">
+              <label for="{{each['name']}}">{{each['label']}}</label>
+              <input type="{{each['dataType']}}" class="form-control margin-left-10" id="{{each['name']}}"
+                placeholder="{{each['label']}}" formControlName="{{each['name']}}"
+                oninput="this.value = Math.round(this.value);">
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="each['dataType'] === 'decimal'">
+            <div class="form-group">
+              <label for="{{each['name']}}">{{each['label']}}</label>
+              <input type="{{each['dataType']}}" class="form-control margin-left-10" id="{{each['name']}}"
+                placeholder="{{each['label']}}" formControlName="{{each['name']}}">
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="each['dataType'] === 'date'">
+            <div class="form-group">
+              <label for="{{each['name']}}">{{each['label']}}</label>
+              <input matInput [matDatepicker]="picker" class="form-control margin-left-10" id="{{each['name']}}"
+                placeholder="{{each['label']}}" formControlName="{{each['name']}}">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="each['dataType'] === 'select' && each['name'] === 'genderCd'">
+            <div class="form-group">
+              <label for="{{each['name']}}">{{each['label']}}</label>
+              <select class="form-control margin-left-10" id="{{each['name']}}" formControlName="{{each['name']}}">
+                <option disabled selected value="">Choose the gender value</option>
+                <option *ngFor="let eachGender of genderOptions" value="{{eachGender}}">{{eachGender}}</option>
+              </select>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="each['dataType'] === 'select' && each['name'] === 'namePrefixCd'">
+            <div class="form-group">
+              <label for="{{each['name']}}">{{each['label']}}</label>
+              <select class="form-control margin-left-10" id="{{each['name']}}" formControlName="{{each['name']}}">
+                <option disabled selected value="">Choose the name Prefix value</option>
+                <option *ngFor="let eachNamePrefix of namePrefixOptions" value="{{eachNamePrefix}}">
+                  {{eachNamePrefix}}</option>
+              </select>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div style="text-align: center;">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
+  </div>
+</section>
